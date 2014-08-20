@@ -1,11 +1,11 @@
 class GameBoard
 
-  def to_s
-    "   |   |   \n" +
+  def board_to_s
+    " 1 | 2 | 3 \n" +
     "-----------\n" +
-    "   |   |   \n" +
+    " 4 | 5 | 6 \n" +
     "-----------\n" +
-    "   |   |   "
+    " 7 | 8 | 9 "
   end
 
 end 
