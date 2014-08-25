@@ -2,15 +2,15 @@ class TicTacToe
 
   def initialize 
     @gameboard = GameBoard.new
-    @player1 = HumanPlayer.new("Player 1")
-    @player2 = HumanPlayer.new("Player 2")
+    @player1 = HumanPlayer.new("Player 1", "X")
+    @player2 = HumanPlayer.new("Player 2", "O")
   end
   
   def play_game
     game_rules
     display @gameboard.board_to_s
-    @player1.get_next_move
-    @player2.get_next_move
+    play_turn(@player1)
+    play_turn(@player2)
   end
 
   def game_rules
@@ -27,6 +27,11 @@ class TicTacToe
       or diagonal row wins the game.
 
     ")
+  end
+
+  def play_turn(player)
+    move = player.get_next_move
+    @gameboard.place_move(move, player.assigned_token)
   end
 
   def display(msg)

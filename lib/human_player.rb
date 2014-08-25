@@ -1,8 +1,12 @@
 class HumanPlayer
   VALID_MOVES = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  attr_reader :assigned_token
 
-  def initialize(name)
+  def initialize(name, assigned_token, input: STDIN, output: STDOUT)
     @name = name
+    @assigned_token = assigned_token
+    @input = input
+    @output = output
   end
 
   def get_next_move
@@ -21,7 +25,7 @@ class HumanPlayer
 
   def ask_for_move
     display("#{@name}, what is your next move?")
-    gets.chomp.to_i
+    @input.gets.chomp.to_i
   end
 
   def valid_move?(move)
@@ -29,7 +33,7 @@ class HumanPlayer
   end
 
   def display(message)
-    puts(message)
+    @output.puts(message)
   end  
 
-end  
+end 
