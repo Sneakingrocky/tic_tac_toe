@@ -30,7 +30,7 @@ class TicTacToe
   end
 
   def play_turn(player)
-    move = player.get_next_move
+    move = player.get_next_move(@gameboard)
     @gameboard.place_move(move, player.assigned_token)
   end
 
