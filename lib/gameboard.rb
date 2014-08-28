@@ -1,7 +1,7 @@
 class GameBoard
 
   def initialize
-    @cells = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
+    @cells = [nil] * 9
   end
 
   def place_move(cell_number, token)
@@ -9,11 +9,15 @@ class GameBoard
   end
 
   def board_to_s
-    " 1 | 2 | 3 \n" +
+    " #{cell_to_s(1)} | #{cell_to_s(2)} | #{cell_to_s(3)} \n" +
     "-----------\n" +
-    " 4 | 5 | 6 \n" +
+    " #{cell_to_s(4)} | #{cell_to_s(5)} | #{cell_to_s(6)} \n" +
     "-----------\n" +
-    " 7 | 8 | 9 "
+    " #{cell_to_s(7)} | #{cell_to_s(8)} | #{cell_to_s(9)} "
+  end
+
+  def cell_to_s(cell_number)
+    at_location(cell_number) || cell_number
   end
 
   def at_location(cell_number)

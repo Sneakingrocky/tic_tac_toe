@@ -10,6 +10,7 @@ class TicTacToe
     game_rules
     display @gameboard.board_to_s
     play_turn(@player1)
+    display @gameboard.board_to_s
     play_turn(@player2)
   end
 
