@@ -1,5 +1,7 @@
 class GameBoard
 
+ WINNING_COMBOS = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+
   def initialize
     @cells = [nil] * 9
   end
@@ -9,19 +11,34 @@ class GameBoard
   end
 
   def board_to_s
-    " #{cell_to_s(1)} | #{cell_to_s(2)} | #{cell_to_s(3)} \n" +
+    " #{cell_display_value(1)} | #{cell_display_value(2)} | #{cell_display_value(3)} \n" +
     "-----------\n" +
-    " #{cell_to_s(4)} | #{cell_to_s(5)} | #{cell_to_s(6)} \n" +
+    " #{cell_display_value(4)} | #{cell_display_value(5)} | #{cell_display_value(6)} \n" +
     "-----------\n" +
-    " #{cell_to_s(7)} | #{cell_to_s(8)} | #{cell_to_s(9)} "
+    " #{cell_display_value(7)} | #{cell_display_value(8)} | #{cell_display_value(9)} "
   end
 
-  def cell_to_s(cell_number)
+  def cell_display_value(cell_number)
     at_location(cell_number) || cell_number
   end
 
   def at_location(cell_number)
     @cells[cell_number - 1]
-  end  
+  end
+
+  def three_in_a_row?
+    WINNING_COMBOS.each do |combo|
+      if spaces_occupied_by_one_player?(combo)
+        return true
+      end  
+    end
+    return false
+  end
+
+  def spaces_occupied_by_one_player?(combo)
+    at_location(combo[0]) == at_location(combo[1]) && 
+      at_location(combo[1]) == at_location(combo[2]) &&
+      at_location(combo[0]) != nil 
+  end
 
 end 

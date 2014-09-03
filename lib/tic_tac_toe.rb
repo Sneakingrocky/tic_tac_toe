@@ -3,14 +3,12 @@ class TicTacToe
   def initialize 
     @gameboard = GameBoard.new
     @player1 = HumanPlayer.new("Player 1", "X")
-    @player2 = HumanPlayer.new("Player 2", "O")
+    @player2 = HumanPlayer.new("Player 2", "O")   
   end
   
   def play_game
     game_rules
-    display @gameboard.board_to_s
     play_turn(@player1)
-    display @gameboard.board_to_s
     play_turn(@player2)
   end
 
@@ -31,7 +29,9 @@ class TicTacToe
   end
 
   def play_turn(player)
+    display @gameboard.board_to_s
     move = player.get_next_move(@gameboard)
+
     @gameboard.place_move(move, player.assigned_token)
   end
 

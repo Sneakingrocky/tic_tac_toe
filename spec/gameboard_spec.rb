@@ -40,5 +40,20 @@ describe GameBoard do
         expect(gameboard.board_to_s).to include(expected_output)
       end  
     end
-  end    
+  end
+
+  describe "three_in_a_row?" do
+    GameBoard::WINNING_COMBOS.each do |combo|
+      it "returns true when #{combo.join(', ')} is taken" do
+        combo.each do |cell|
+          gameboard.place_move(cell, "X")
+        end
+        expect(gameboard.three_in_a_row?).to eq(true)
+      end
+    end
+
+    it "returns false when gameboard is empty" do
+      expect(gameboard.three_in_a_row?).to eq(false)
+    end  
+  end
 end  
