@@ -72,4 +72,28 @@ describe GameBoard do
       expect(gameboard.game_is_a_draw?).to eq(true)
     end
   end
+
+  describe "game_is_over?" do
+    it "returns true when the game has been won" do
+      gameboard.place_move(1, "X")
+      gameboard.place_move(2, "X")
+      gameboard.place_move(3, "X")
+
+      expect(gameboard.game_is_over?).to eq(true)
+    end
+    
+    it "returns true when the game is a draw" do
+      gameboard.place_move(1, "X")
+      gameboard.place_move(2, "O")
+      gameboard.place_move(3, "X")
+      gameboard.place_move(4, "O")
+      gameboard.place_move(5, "O")
+      gameboard.place_move(6, "X")
+      gameboard.place_move(7, "X")
+      gameboard.place_move(8, "X")
+      gameboard.place_move(9, "O")
+
+      expect(gameboard.game_is_over?).to eq(true)
+    end
+  end    
 end  

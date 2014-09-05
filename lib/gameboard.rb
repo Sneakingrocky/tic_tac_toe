@@ -45,4 +45,7 @@ class GameBoard
     !three_in_a_row? && @cells.all? { |cell| cell != nil }   
   end
 
+  def game_is_over?
+    game_is_a_draw? || three_in_a_row?
+  end  
 end 
