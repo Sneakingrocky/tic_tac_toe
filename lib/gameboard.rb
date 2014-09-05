@@ -41,4 +41,8 @@ class GameBoard
       at_location(combo[0]) != nil 
   end
 
+  def game_is_a_draw?
+    !three_in_a_row? && @cells.all? { |cell| cell != nil }   
+  end
+
 end 
