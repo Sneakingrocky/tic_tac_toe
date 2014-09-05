@@ -8,8 +8,15 @@ class TicTacToe
   
   def play_game
     game_rules
-    play_turn(@player1)
-    play_turn(@player2)
+    
+    while true 
+      play_turn(@player1)
+      break if @gameboard.game_is_over?
+      play_turn(@player2)
+      break if @gameboard.game_is_over?
+    end
+    display @gameboard.board_to_s
+    display("Game over!")  
   end
 
   def game_rules
